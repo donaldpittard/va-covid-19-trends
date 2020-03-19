@@ -1,24 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import CovidChart from "./CovidChart";
+import Loadable from "./Loadable";
+import useTotals from "./useTotals";
 
 function App() {
+  const totals = useTotals();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Covid-19 Trends in Virginia</h1>
+      <Loadable predicate={() => totals.length === 0}>
+        <CovidChart totals={totals} />
+      </Loadable>
     </div>
   );
 }

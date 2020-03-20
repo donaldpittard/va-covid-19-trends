@@ -10,9 +10,11 @@ function App() {
 
   return (
     <div className="App">
-      <h1>COVID-19 Trends in Virginia</h1>
+      <h1>COVID-19 in Virginia</h1>
       <Loadable predicate={() => totals.length === 0}>
+        <h2>Total Cases</h2>
         <CovidCasesLineChart data={totals} />
+        <h2>New Cases</h2>
         <CovidCalendar data={totals} />
       </Loadable>
     </div>

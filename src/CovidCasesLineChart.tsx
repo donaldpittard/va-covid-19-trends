@@ -1,10 +1,21 @@
 import React from "react";
-import { ResponsiveLine } from "@nivo/line";
+import { ResponsiveLine, PointTooltip } from "@nivo/line";
 import CaseData from "./CaseData";
 
 interface CovidCasesLineChartProps {
   data: CaseData[];
 }
+
+const tooltip: PointTooltip = ({ point }) => {
+  const pointSerie = point.serieId;
+  const pointData = point.data;
+
+  return (
+    <div style={{ backgroundColor: "#FFFFFF", padding: "5px" }}>
+      <span className="bold">{pointData.x}</span>: {pointData.y} {pointSerie}
+    </div>
+  );
+};
 
 export default function CovidCasesLineChart({
   data,
@@ -40,6 +51,7 @@ export default function CovidCasesLineChart({
           data: deaths
         }
       ]}
+      tooltip={tooltip}
       colors={["#9390dc", "#98d3ae", "#eb5e44"]}
       curve={"monotoneX"}
       margin={{ top: 50, right: 110, bottom: 50, left: 60 }}

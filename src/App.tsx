@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
-import CovidChart from "./CovidChart";
+import CovidCasesLineChart from "./CovidCasesLineChart";
+import CovidCalendar from "./CovidCalendar";
 import Loadable from "./Loadable";
 import useTotals from "./useTotals";
 
@@ -11,7 +12,8 @@ function App() {
     <div className="App">
       <h1>COVID-19 Trends in Virginia</h1>
       <Loadable predicate={() => totals.length === 0}>
-        <CovidChart totals={totals} />
+        <CovidCasesLineChart data={totals} />
+        <CovidCalendar data={totals} />
       </Loadable>
     </div>
   );

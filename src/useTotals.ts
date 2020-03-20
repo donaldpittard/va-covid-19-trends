@@ -17,10 +17,10 @@ export default function useTotals() {
                 ? totalCases
                 : totalCases - entries[index - 1]["gsx$cases"]["$t"];
             return {
-              Date: entry["gsx$date"]["$t"],
-              Cases: totalCases,
-              "New Cases": newCases,
-              Deaths: parseInt(entry["gsx$deaths"]["$t"])
+              date: entry["gsx$date"]["$t"],
+              totalCases: totalCases,
+              newCases: newCases,
+              deaths: parseInt(entry["gsx$deaths"]["$t"])
             };
           })
         );
